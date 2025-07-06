@@ -2,14 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "../utils/CartContext";
 
 const BookCard = ({ book }) => {
-     const {
-          bookcart,
-          addToCart,
-          removeBook,
-          increaseQuantity,
-          decreaseQuantity,
-     } = useContext(CartContext);
-     let inCart = bookcart.find((item) => item.book.id === book.id);
+     const {addToCart} = useContext(CartContext);
      return (
           <div style={{ border: "2px solid black", padding: "30px" }}>
                <img src={book.image} width="200px" />
@@ -18,10 +11,10 @@ const BookCard = ({ book }) => {
                <p>&#8377;{book.price}</p>
                <button
                     onClick={() =>
-                         inCart ? removeBook(book.id) : addToCart(book)
+                     addToCart(book)
                     }
                >
-                    {inCart ? "Remove from Cart" : "Add to Cart"}
+                    Add to Cart
                </button>
           </div>
      );
