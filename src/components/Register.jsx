@@ -1,6 +1,6 @@
-import React from 'react'
 
 const Register = () => {
+    
   return (
      <div>
         <p>Create account </p>
@@ -30,4 +30,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Register;
