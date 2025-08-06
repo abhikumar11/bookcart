@@ -1,12 +1,25 @@
-import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
+import Layout from './components/Layout'
+import Home from './components/Home'
+import Cart from './components/Cart'
+import Order from './components/Order'
+import Checkout from './components/Checkout'
 
 const App = () => {
   return (
     <div>
-      <Login/>
-      <Register/>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+        <Route index element={<Home/>}/>
+        <Route path="/login"  element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/order" element={<Order/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+      </Route>
+      </Routes>
     </div>
   )
 }
