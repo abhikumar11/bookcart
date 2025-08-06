@@ -1,0 +1,33 @@
+{
+    "books":[
+        {
+            "title":"",
+            "author":"",
+            "gener":"",
+            "plength":"",
+            "language":"",
+            "publisher":"",
+            "instock":"",
+            "bimage":"",
+            "price":""
+        }
+    ],
+    "user":[
+        {
+            "email":"",
+            "password":"",
+            "mobile":"",
+            "address":"",
+            "city":"",
+            "pin":"",
+            "name":""
+        }
+    ],
+    "checkout":[
+        {
+            "userid":"",
+            "items":[{"bookid":"", "qty":""}],
+            "paymenttype":""
+    }
+    ]
+}
