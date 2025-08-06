@@ -7,8 +7,11 @@ import Cart from './components/Cart'
 import Order from './components/Order'
 import Checkout from './components/Checkout'
 import { ToastContainer } from 'react-toastify'
+import { useContext } from 'react'
+import { userStore } from './utils/UserContext'
 
 const App = () => {
+  const {user}=useContext(userStore);
   return (
     <div>
       <ToastContainer position="top-center" autoClose={3000}/>
@@ -18,7 +21,7 @@ const App = () => {
         <Route path="/login"  element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/cart" element={<Cart/>}/>
-        <Route path="/order" element={<Order/>}/>
+        <Route path="/order" element={user?<Order/>:<Login/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
       </Route>
       </Routes>

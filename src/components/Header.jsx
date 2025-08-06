@@ -7,11 +7,11 @@ const Header = () => {
   return (
     <div>
       <div>
-        <p>ChapterOne</p>
+      <Link to="/"><p>ChapterOne</p></Link>
       </div>
       <div>
         <p>{user ?`Hi! ${user.name}`: " "}</p>
-        <Link><p>Order</p></Link>
+        <Link to={user?"/order":"/login"}><p>Order</p></Link>
         {user ? (
           <button onClick={handleLogout}>
             Logout
