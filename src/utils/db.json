@@ -1,33 +1,53 @@
 {
-    "books":[
-        {
-            "title":"",
-            "author":"",
-            "gener":"",
-            "plength":"",
-            "language":"",
-            "publisher":"",
-            "instock":"",
-            "bimage":"",
-            "price":""
-        }
-    ],
-    "user":[
-        {
-            "email":"",
-            "password":"",
-            "mobile":"",
-            "address":"",
-            "city":"",
-            "pin":"",
-            "name":""
-        }
-    ],
-    "checkout":[
-        {
-            "userid":"",
-            "items":[{"bookid":"", "qty":""}],
-            "paymenttype":""
+  "books": [
+    {
+      "title": "",
+      "author": "",
+      "gener": "",
+      "plength": "",
+      "language": "",
+      "publisher": "",
+      "instock": "",
+      "bimage": "",
+      "price": "",
+      "id": "906a"
     }
-    ]
+  ],
+  "user": [
+    {
+      "email": "",
+      "password": "",
+      "mobile": "",
+      "address": "",
+      "city": "",
+      "pin": "",
+      "name": "",
+      "id": "b9f6"
+    },
+    {
+      "id": "0cc9",
+      "name": "Abhishek",
+      "email": "abhi@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "d2d4",
+      "name": "vikas",
+      "email": "vi@gmail.com",
+      "password": "123"
+    }
+  ],
+  "checkout": [
+    {
+      "userid": "",
+      "items": [
+        {
+          "bookid": "",
+          "qty": ""
+        }
+      ],
+      "paymenttype": "",
+      "id": "ed93"
+    }
+  ]
 }
