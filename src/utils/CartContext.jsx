@@ -7,9 +7,9 @@ const CartProvider=({children})=>{
     const [cart,setCart]=useState([]);
     
     return(
-        <userStore.Provider value={{cart}}>
+        <cartStore.Provider value={{cart}}>
             {children}
-        </userStore.Provider>
+        </cartStore.Provider>
     )
 }
 export default CartProvider;
