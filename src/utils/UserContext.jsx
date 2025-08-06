@@ -6,14 +6,14 @@ import { toast } from "react-toastify";
 export const userStore = createContext();
 
 const UserProvider = ({ children }) => {
-
   const [frmData, setFrmData] = useState({});
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setFrmData({...frmData,[name]:value});
-  }
+    setFrmData({ ...frmData, [name]: value });
+  };
   const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = frmData;
@@ -24,25 +24,26 @@ const UserProvider = ({ children }) => {
     }
     try {
       const res = await axios.get("http://localhost:3000/user");
-      const foundUser = res.data.find((item) => item.email === email);
+      const exist = res.data.find((item) => item.email === email);
 
-      if (!foundUser) {
+      if (!exist) {
         toast.error("User not found");
         return;
       }
 
-      if (foundUser.password !== password) {
+      if (exist.password !== password) {
         toast.error("Wrong password");
         return;
       }
       toast.success("Login successful");
       setFrmData({});
+      setUser(exist);
       navigate("/");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong while logging in");
     }
-  }
+  };
   const handleRegister = async (e) => {
     e.preventDefault();
     const { name, email, password } = frmData;
@@ -52,7 +53,10 @@ const UserProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:3000/user", frmData);
+      const res = await axios.post(
+        "http://localhost:3000/user",
+        frmData
+      );
 
       if (!res) {
         toast.error("unable to create account");
@@ -65,13 +69,19 @@ const UserProvider = ({ children }) => {
       console.error(err);
       toast.error("Something went wrong while signing up");
     }
-  }
+  };
+  const handleLogout = () => {
+    setUser(null);
+    navigate("/");
+  };
   return (
-    <userStore.Provider value={{ handleInput, handleLogin, handleRegister }}>
+    <userStore.Provider
+      value={{ handleInput, handleLogin, handleRegister, user, handleLogout }}
+    >
       {children}
     </userStore.Provider>
-  )
-}
+  );
+};
 export default UserProvider;
 // http://localhost:3000/books
 // http://localhost:3000/user
