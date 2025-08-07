@@ -5,16 +5,16 @@ const BookCard = ({book}) => {
   return (
     <div>
       <div>
-        <img src="" alt="image"/>
+        <img src={book.bimage} alt="image"/>
       </div>
       <div>
         <Link>
-        <p>Book Title</p>
+        <p>{book.title}</p>
         </Link>
-        <p>Author</p>
+        <p>{book.author}</p>
       </div>
         <div>
-          <p>Price</p>
+          <p>&#8377; {book.price}</p>
         </div>
     </div>
   )

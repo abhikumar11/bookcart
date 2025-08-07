@@ -16,7 +16,7 @@ const Home = () => {
                {loading ? (
                     <ClipLoader color="#36d7b7" size={50} />
                ) : (
-                    <BookCard book={book} />
+                    book?.map((item)=><BookCard book={item} />)
                )}
           </div>
      );

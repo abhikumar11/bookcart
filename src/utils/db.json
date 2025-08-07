@@ -1,16 +1,64 @@
 {
   "books": [
     {
-      "title": "",
-      "author": "",
-      "gener": "",
-      "plength": "",
-      "language": "",
-      "publisher": "",
-      "instock": "",
-      "bimage": "",
-      "price": "",
-      "id": "906a"
+      "id": "cae7",
+      "title": "The Housemaid",
+      "author": "Freida McFadden",
+      "gener": "Crime",
+      "plength": 336,
+      "description": "Freida McFadden’s The Housemaid is a mind-bending psychological page-turner perfect for fans of Verity, The Woman in the Window, Ruth Ware, and Lisa Jewell.",
+      "publisher": "India Penguin",
+      "instock": 20,
+      "bimage": "https://shorturl.at/HwHBX",
+      "price": 343
+    },
+    {
+      "id": "f541",
+      "title": "Metamorphosis",
+      "author": "Franz Kafka",
+      "gener": "Crime",
+      "plength": 112,
+      "description": "How significant can a picture of a woman in fur be when you try to hold it dear as the only resemblance left to human life? When Gregor Samsa wakes up in his bed, he is aghast to find himself transformed into a giant bug",
+      "publisher": "Rupa Publications India",
+      "instock": 15,
+      "bimage": "https://shorturl.at/0Fgsv",
+      "price": 96
+    },
+    {
+      "id": "9e8c",
+      "title": "Never Lie",
+      "author": "Freida McFadden",
+      "gener": "Crime",
+      "plength": 336,
+      "description": "Newlyweds Tricia and Ethan are searching for the house of their dreams. They think they’ve found it in the remote manor that once belonged to Dr. Adrienne Hale, a renowned psychiatrist who years ago vanished without a trace.",
+      "publisher": "India Penguin",
+      "instock": 15,
+      "bimage": "https://shorturl.at/ZFL0h",
+      "price": 343
+    },
+    {
+      "id": "eb3e",
+      "title": "And Then There Were None",
+      "author": " Agatha Christie",
+      "gener": "Crime",
+      "plength": 256,
+      "description": "The 10 strangers include a reckless playboy, a troubled Harley Street doctor, a formidable judge, an uncouth detective, an unscrupulous mercenary, a God-fearing spinster, two restless servants, a highly decorated general and an anxious secretary",
+      "publisher": "Harper Collins",
+      "instock": 15,
+      "bimage": "https://shorturl.at/6Wg4P",
+      "price": 221
+    },
+    {
+      "id": "306b",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "gener": "Crime",
+      "plength": 504,
+      "description": "Rodion Romanov itch Raskolnikov, a brilliant yet conflicted student lives in a rented room of a run-down apartment in St. Petersburg. Extremely handsome, proud and intelligent, Raskolnikov devises a peculiar theory about? intelligent? men being above law",
+      "publisher": "Om Books International",
+      "instock": 15,
+      "bimage": "https://shorturl.at/fX1E6",
+      "price": 204
     }
   ],
   "user": [
