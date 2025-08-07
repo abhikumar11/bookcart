@@ -8,15 +8,17 @@ const BookProvider = ({ children }) => {
 
     const [book, setBook] = useState([]);
     const [loading, setLoading] = useState(true);
-    const fetchBook = () => {
+
+    const fetchBook = async() => {
         try {
-            axios.get("http://localhost:3000/books")
-                .then((res) => {
-                    setBook(res.data);
-                    setLoading(false);
-                }
-                )
-                .catch(() => toast.error("Something went wrong"))
+            const {data}=await axios.get("http://localhost:3000/books");
+            if(data){
+                setBook(data);
+                setLoading(false);
+            }
+            else{
+                toast.error("unable to load data");
+            }
         } catch (err) {
             console.log(err);
         }
