@@ -39,7 +39,7 @@ const Header = () => {
           ) : (
             <Link
               to="/login"
-              className="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600 cursor-pointer"
+              className="bg-orange-600 text-white px-3 py-1 rounded hover:bg-orange-700 cursor-pointer"
             >
               Login
             </Link>
