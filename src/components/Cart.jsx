@@ -19,7 +19,7 @@ const Cart = () => {
           <div className="right-section text-center md:text-left space-y-4">
             <h2 className="text-2xl font-bold text-gray-800">Your Chapter One Cart is empty</h2>
             <Link to="/">
-              <button className="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+              <button className="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 cursor-pointer">
                 Shop Now
               </button>
             </Link>
