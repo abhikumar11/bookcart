@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import cartimage from '../assets/emptycart.png';
 
 const Cart = () => {
-  const { cart,increaseQty,decreaseQty } = useContext(cartStore);
+  const { cart, increaseQty, decreaseQty, deleteItem } = useContext(cartStore);
 
-  const totalItems = cart.reduce((sum, item) => sum + item.qty,0);
-  const totalPrice = cart.reduce((sum, item) => sum + item.qty * item.price,0);
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
 
   return (
     <div className="bg-gray-100 min-h-screen py-10">
@@ -27,7 +27,7 @@ const Cart = () => {
         </div>
       ) : (
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 bg-white p-6 rounded shadow-md">
-       
+
           <div className="md:col-span-2 space-y-6">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Shopping Cart</h1>
 
@@ -44,15 +44,16 @@ const Cart = () => {
                   </div>
 
                   <div className="flex items-center gap-2 mt-3">
-                    <button onClick={()=>decreaseQty(item)} className="px-2 py-1 text-white bg-orange-600 rounded hover:bg-orange-700 cursor-pointer">-</button>
+                    <button onClick={() => decreaseQty(item)}
+                      disabled={item.qty === 1} className="px-2 py-1 text-white bg-orange-600 rounded hover:bg-orange-700 cursor-pointer">-</button>
                     <input
                       type="text"
                       disabled
                       value={item.qty}
                       className="w-10 text-center border rounded"
                     />
-                    <button onClick={()=>increaseQty(item)} className="px-2 py-1 text-white bg-orange-600 rounded hover:bg-orange-700 cursor-pointer">+</button>
-                    <button className="ml-4 text-red-600 hover:underline cursor-pointer">Delete</button>
+                    <button onClick={() => increaseQty(item)} className="px-2 py-1 text-white bg-orange-600 rounded hover:bg-orange-700 cursor-pointer">+</button>
+                    <button onClick={() => deleteItem(item.id)} className="ml-4 text-red-600 hover:underline cursor-pointer">Delete</button>
                   </div>
                 </div>
               </div>
@@ -63,7 +64,7 @@ const Cart = () => {
             <p className="text-xl font-bold text-gray-800">
               Subtotal ({totalItems} item{totalItems > 1 ? "s" : ""}): ₹{totalPrice}
             </p>
-            
+
             <button className="w-full bg-orange-600 text-white py-2 rounded font-semibold hover:bg-orange-700 cursor-pointer">
               Proceed to Buy
             </button>

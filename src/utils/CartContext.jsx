@@ -24,12 +24,20 @@ const CartProvider = ({ children }) => {
      };
 
      const increaseQty = (item) => {
-            
+        const data=cart.map((p)=>p.id===item.id?{...p,qty:p.qty+1}:p);
+        setCart(data);
+        toast.info("Quantity updated")
      };
      const decreaseQty = (item) => {
-
+        const data=cart.map((p)=>p.id===item.id?{...p,qty:p.qty-1}:p);
+        setCart(data);
+        toast.info("Quantity updated")
      };
-     const deleteItem = (id) => {};
+     const deleteItem = (id) => {
+        const data=cart.filter((item)=>item.id!==id);
+        setCart(data)
+        toast.success("Item removed");
+     };
 
      const buySingle = async () => {};
      const buyAll = async () => {};
