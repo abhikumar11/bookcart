@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify'
 import { useContext } from 'react'
 import { userStore } from './utils/UserContext'
 import BookDetails from './components/BookDetails'
+import Profile from './components/Profile'
 
 const App = () => {
   const {user}=useContext(userStore);
@@ -21,6 +22,7 @@ const App = () => {
         <Route index element={<Home/>}/>
         <Route path="/login"  element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/profile/:id" element={<Profile/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/order" element={user?<Order/>:<Login/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
