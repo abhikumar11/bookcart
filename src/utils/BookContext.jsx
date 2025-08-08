@@ -9,9 +9,9 @@ const BookProvider = ({ children }) => {
     const [book, setBook] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const fetchBook = async() => {
+    const fetchBook = async(id="") => {
         try {
-            const {data}=await axios.get("http://localhost:3000/books");
+            const {data}=await axios.get(`http://localhost:3000/books/${id}`);
             if(data){
                 setBook(data);
                 setLoading(false);

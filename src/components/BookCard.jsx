@@ -8,7 +8,7 @@ const BookCard = ({book}) => {
         <img src={book.bimage} alt="image"/>
       </div>
       <div>
-        <Link>
+        <Link to={`/bookdetail/${book.id}`}>
         <p>{book.title}</p>
         </Link>
         <p>{book.author}</p>

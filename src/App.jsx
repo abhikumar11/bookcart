@@ -9,6 +9,7 @@ import Checkout from './components/Checkout'
 import { ToastContainer } from 'react-toastify'
 import { useContext } from 'react'
 import { userStore } from './utils/UserContext'
+import BookDetails from './components/BookDetails'
 
 const App = () => {
   const {user}=useContext(userStore);
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/order" element={user?<Order/>:<Login/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/bookdetail/:id" element={<BookDetails/>}/>
       </Route>
       </Routes>
     </div>
