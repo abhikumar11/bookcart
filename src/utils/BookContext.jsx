@@ -29,7 +29,6 @@ const BookProvider = ({ children }) => {
         try {
             const {data}=await axios.get(`http://localhost:3000/books/${id}`);
             if(data){
-                 console.log(data)
                 setSingleBook(data);
                 setLoading(false);
             }

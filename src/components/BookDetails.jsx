@@ -1,11 +1,19 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { bookStore } from "../utils/BookContext";
+import { userStore } from "../utils/UserContext";
 import { ClipLoader } from "react-spinners";
+import { cartStore } from "../utils/CartContext";
 
 const BookDetails = () => {
   const { id } = useParams();
+
   const { singleBook, fetchBookById } = useContext(bookStore);
+  const {addToCart}=useContext(cartStore);
+  const {user}=useContext(userStore)
+
+  const [qty,setQty]=useState(1);
+  const product={item:singleBook,qty:parseInt(qty)}
 
   useEffect(() => {
     fetchBookById(id);
@@ -22,7 +30,7 @@ const BookDetails = () => {
 
         <div className="flex justify-center items-start">
           <img
-            src={singleBook?.bimage || "/placeholder.jpg"}
+            src={singleBook?.bimage || ""}
             alt={singleBook?.title}
             className="w-full max-w-sm h-auto object-contain"
           />
@@ -44,24 +52,18 @@ const BookDetails = () => {
 
 
         <div className="border border-gray-300 rounded-lg p-5 shadow-sm sticky top-24 h-fit bg-gray-50">
-          <p className="text-xl font-semibold text-blue-700 mb-2">₹{singleBook?.price}</p>
+          <p className="text-xl font-bold text-black-700 mb-2">₹{singleBook?.price}</p>
           <p className={`text-sm mb-4 font-medium ${singleBook?.instock > 0 ? "text-green-600" : "text-red-600"}`}>
             {singleBook?.instock > 0 ? "In Stock" : "Out of Stock"}
           </p>
 
           <div className="mb-4">
-            <label htmlFor="address" className="block text-sm text-gray-600 mb-1">Delivery Address</label>
-            <input
-              type="text"
-              id="address"
-              placeholder="e.g. Delhi, India"
-              className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-400"
-            />
+            <p className="block text-sm text-blue-600 mb-1">Deliver to {user?user.name:"Please login"} - Bhopal 462030‌</p>
           </div>
 
           <div className="mb-4">
             <label htmlFor="quantity" className="block text-sm text-gray-600 mb-1">Quantity</label>
-            <select
+            <select onChange={(e)=>setQty(e.target.value)}
               id="quantity"
               className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-400"
             >
@@ -74,7 +76,7 @@ const BookDetails = () => {
           </div>
 
           <div className="flex flex-col space-y-3">
-            <button
+            <button onClick={()=>addToCart(product)}
               disabled={singleBook?.instock === 0}
              style={{
                 backgroundColor: singleBook?.instock > 0 ? "#27548A" : "#D1D5DB",
