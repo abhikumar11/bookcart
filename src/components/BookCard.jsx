@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BookCard = ({ book }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition p-4 flex flex-col justify-between">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-xl shadow-orange-700 transition p-4 flex flex-col justify-between">
       <Link to={`/bookdetail/${book.id}`}>
         <img
           src={book.bimage}

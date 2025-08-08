@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { bookStore } from "../utils/BookContext";
 import { userStore } from "../utils/UserContext";
@@ -9,7 +10,7 @@ const BookDetails = () => {
   const { id } = useParams();
 
   const { singleBook, fetchBookById } = useContext(bookStore);
-  const {addToCart}=useContext(cartStore);
+  const {addToCart,buySingle}=useContext(cartStore);
   const {user}=useContext(userStore)
 
   const [qty,setQty]=useState(1);
@@ -87,7 +88,7 @@ const BookDetails = () => {
             >
               Add to Cart
             </button>
-            <button
+            <Link to="/checkout"><button onClick={()=>buySingle(product)}
               disabled={singleBook?.instock === 0}
               style={{
                 backgroundColor: singleBook?.instock > 0 ? "#ea580c" : "#D1D5DB",
@@ -97,7 +98,7 @@ const BookDetails = () => {
                 }`}
             >
               Buy Now
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>

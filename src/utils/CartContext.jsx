@@ -39,8 +39,12 @@ const CartProvider = ({ children }) => {
         toast.success("Item removed");
      };
 
-     const buySingle = async () => {};
-     const buyAll = async () => {};
+     const buySingle = async (item) => {
+               console.log(item)
+     };
+     const checkOutAll = async (item) => {
+          
+     };
 
      return (
           <cartStore.Provider
