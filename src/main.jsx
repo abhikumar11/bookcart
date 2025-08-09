@@ -6,9 +6,11 @@ import { BrowserRouter } from "react-router-dom"
 import UserProvider from './utils/UserContext.jsx'
 import BookProvider from './utils/BookContext.jsx'
 import CartProvider from './utils/CartContext.jsx'
+import CheckoutProvider from './utils/CheckoutContext.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+    <CheckoutProvider>
       <CartProvider>
         <UserProvider>
           <BookProvider>
@@ -16,6 +18,7 @@ createRoot(document.getElementById('root')).render(
           </BookProvider>
         </UserProvider>
       </CartProvider>
+      </CheckoutProvider>
     </BrowserRouter>
   </StrictMode>,
 )

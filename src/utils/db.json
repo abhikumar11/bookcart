@@ -88,12 +88,7 @@
   "checkout": [
     {
       "userid": "",
-      "items": [
-        {
-          "bookid": "",
-          "qty": ""
-        }
-      ],
+      "items": [{"bookid": "","qty": ""}],
       "paymenttype": "",
       "id": "ed93"
     }

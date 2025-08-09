@@ -40,18 +40,15 @@ const CartProvider = ({ children }) => {
      };
 
      const buySingle = async (item) => {
-               console.log(item)
+               
      };
-     const checkOutAll = async (item) => {
-          
-     };
+    
 
      return (
           <cartStore.Provider
                value={{
                     cart,
                     buySingle,
-                    buyAll,
                     addToCart,
                     increaseQty,
                     decreaseQty,
