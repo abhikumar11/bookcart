@@ -5,7 +5,7 @@ export const cartStore = createContext();
 
 const CartProvider = ({ children }) => {
      const [cart, setCart] = useState([]);
-
+     
      const addToCart = (book) => {
           const { item, qty } = book;
           const exist = cart.find((p) => p.id === item.id);
@@ -39,16 +39,12 @@ const CartProvider = ({ children }) => {
         toast.success("Item removed");
      };
 
-     const buySingle = async (item) => {
-               
-     };
-    
+   
 
      return (
           <cartStore.Provider
                value={{
                     cart,
-                    buySingle,
                     addToCart,
                     increaseQty,
                     decreaseQty,

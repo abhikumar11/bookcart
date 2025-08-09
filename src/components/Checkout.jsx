@@ -2,12 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { checkoutStore } from "../utils/CheckoutContext";
 
 const Checkout = () => {
-  const {handlePayment,payment}=useContext(checkoutStore);
+  const {handlePayment,payment,checkOutItem}=useContext(checkoutStore);
 
   useEffect(()=>{
     handlePayment("")
   },[])
-  
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -21,7 +21,7 @@ const Checkout = () => {
             <select
               value={payment}
               onChange={(e) => handlePayment(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none hover:cursor-pointer"
             >
               <option value="" selected>Select a payment method</option>
               <option value="Credit or Debit Card">Credit or Debit Card</option>
@@ -33,27 +33,23 @@ const Checkout = () => {
             </select>
           </div>
 
-          {/* Items List */}
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-xl font-bold mb-4">Items in your order</h2>
-            <div className="flex gap-4 border-b pb-4 mb-4">
-              <div className="w-20 h-24 bg-gray-200 rounded-lg"></div>
+            {
+              checkOutItem?.map((p)=>(
+                  <div className="flex gap-4 border-b pb-4 mb-4">
+              <div className="w-20 h-24 bg-gray-200 rounded-lg">
+                <img src={p.item.bimage} alt=""/>
+              </div>
               <div>
-                <p className="font-semibold">Book Title</p>
-                <p className="text-sm text-gray-500">Author Name</p>
-                <p className="text-black font-semibold">₹500</p>
-                <p className="text-sm text-black">Qty: 1</p>
+                <p className="font-semibold">{p.item.title}</p>
+                <p className="text-sm text-gray-500">{p.item.author}</p>
+                <p className="text-black font-semibold">₹{p.item.price}</p>
+                <p className="text-sm text-black">Qty: {p?.qty}</p>
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="w-20 h-24 bg-gray-200 rounded-lg"></div>
-              <div>
-                <p className="font-semibold">Another Book</p>
-                <p className="text-sm text-gray-500">Author Name</p>
-                <p className="text-blue-600 font-semibold">₹300</p>
-                <p className="text-sm text-gray-500">Qty: 2</p>
-              </div>
-            </div>
+              ))
+            }
           </div>
         </div>
 
@@ -84,7 +80,7 @@ const Checkout = () => {
   className={`w-full mt-6 font-semibold py-3 rounded-lg transition 
     ${payment === "" 
       ? "bg-gray-400 text-white cursor-not-allowed" 
-      : "bg-orange-600 text-white hover:bg-orange-700"}`}
+      : "bg-orange-600 text-white hover:bg-orange-700 cursor-pointer"}`}
 >
   Place Order
 </button>

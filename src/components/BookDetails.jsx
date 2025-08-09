@@ -5,12 +5,14 @@ import { bookStore } from "../utils/BookContext";
 import { userStore } from "../utils/UserContext";
 import { ClipLoader } from "react-spinners";
 import { cartStore } from "../utils/CartContext";
+import { checkoutStore } from "../utils/CheckoutContext";
 
 const BookDetails = () => {
   const { id } = useParams();
 
   const { singleBook, fetchBookById } = useContext(bookStore);
-  const {addToCart,buySingle}=useContext(cartStore);
+  const {addToCart}=useContext(cartStore);
+  const {buySingle}=useContext(checkoutStore);
   const {user}=useContext(userStore)
 
   const [qty,setQty]=useState(1);
