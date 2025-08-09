@@ -24,12 +24,8 @@ const BookDetails = () => {
   }, [id]);
 
   const handleBuyNow = () => {
-      buySingle(product);
-    if (user) {
-      navigate("/checkout");
-    } else {
-      navigate("/login");
-    }
+    navigate("/checkout");
+    buySingle(product);
   };
 
   if (!singleBook) {

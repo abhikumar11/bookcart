@@ -8,20 +8,13 @@ const Checkout = () => {
 
   const totalitems = checkOutItem.reduce((sum, p) => sum + p.qty, 0);
   const totalprice = checkOutItem.reduce(
-    (sum, p) => sum + p.item.price * p.qty,
+    (sum, p) => sum + p.price * p.qty,
     0
   );
 
   useEffect(() => {
     handlePayment("");
   }, []);
-  
-   const handlePlaceOrder = (e) => {
-    e.preventDefault();
-    placeOrder(user?.id);
-   // alert("hello")
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -30,7 +23,7 @@ const Checkout = () => {
             <p className="text-gray-500 text-sm">
               Delivering to{" "}
               <span className="text-black font-semibold">
-                {user.name}
+                {user?.name}
               </span>
             </p>
             <p className="text-lg font-semibold">
@@ -73,22 +66,22 @@ const Checkout = () => {
                 <div className="w-20 h-24 bg-gray-200 rounded-lg overflow-hidden">
                   <img
                     className="w-full h-full object-cover"
-                    src={p.item.bimage}
-                    alt={p.item.title}
+                    src={p.bimage}
+                    alt={p.title}
                   />
                 </div>
                 <div>
                   <p className="font-semibold">
-                    {p.item.title}
+                    {p.title}
                   </p>
                   <p className="text-sm text-gray-500">
-                    {p.item.author}
+                    {p.author}
                   </p>
                   <p className="text-black font-semibold">
-                    ₹{p.item.price}
+                    ₹{p.price}
                   </p>
                   <p className="text-sm text-black">
-                    Qty: {p?.qty}
+                    Qty: {p.qty}
                   </p>
                 </div>
               </div>
@@ -120,10 +113,7 @@ const Checkout = () => {
             <span>₹{totalprice}</span>
           </div>
           
-          <button type="button" onClick={(e) => {
-    e.preventDefault();
-    placeOrder(user.id);
-  }}
+          <button type="button" onClick={placeOrder}
             disabled={payment === ""}
             className={`w-full mt-6 font-semibold py-3 rounded-lg transition 
     ${payment === ""

@@ -6,12 +6,14 @@ import { toast } from "react-toastify";
 export const checkoutStore = createContext();
 
 const CheckoutProvider = ({ children }) => {
+
      const [checkOutItem, setCheckoutItem] = useState([]);
      const [payment, setPayment] = useState("");
      const navigate=useNavigate();
 
-     const checkOutAll = async (item) => {
-          //setCheckoutItem(item);
+     const checkOutAll =(item) => {
+          setCheckoutItem(item);
+          navigate("/checkout");
      };
 
      const buySingle=(item) => {
@@ -22,39 +24,36 @@ const CheckoutProvider = ({ children }) => {
           setPayment(item);
      };
 
-     const placeOrder = async (userid) => {
-          try {
-               const temp = checkOutItem.map((p) => ({
-                    bookid: p.item.id,
-                    qty: p.qty,
-               }));
+     const placeOrder=()=>{
+          const user=JSON.parse(localStorage.getItem("user"))
+  try {
+    const temp = checkOutItem.map((p) => ({
+      bookid: p.id,
+      qty: p.qty,
+    }));
 
-               const order = {
-                    userid: userid,
-                    items: temp,
-                    paymenttype: payment,
-               };
-               console.log(temp);
-               const res = await axios.post(
-                    "http://localhost:3000/checkout",
-                    order
-               );
-                 if (!res) {
-        toast.error("unable to place your order");
-        return;
-      }
-      toast.success("Your order has been placed");
-      setCheckoutItem([]);
-      
-               //navigate("/order");
-      
-      
-      
+    const order = {
+      userid: user.id,
+      items: temp,
+      paymenttype: payment,
+    };
+    console.log("Order payload:", order);
+
+     axios.post("http://localhost:3000/usercheckout", order)
+     .then(()=>{
+                toast.success("Your order has been placed");
+     })
+
+   
+    //setCheckoutItem([]);
+    //navigate("/order");
   } catch (err) {
-    toast.error(`Unable to place your order: ${err.message}`);
+    console.log(err);
+    toast.error(`Order failed: ${err.response?.data?.message || err.message}`);
   }
-     };
+};
 
+     
      return (
           <checkoutStore.Provider
                value={{

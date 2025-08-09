@@ -97,94 +97,40 @@
       "password": "123"
     }
   ],
-  "checkout": [
+  "usercheckout": [
     {
-      "id": "299e",
+      "id": "87f6",
       "userid": "0cc9",
       "items": [
         {
+          "bookid": "f541",
+          "qty": 1
+        },
+        {
           "bookid": "cae7",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Net Banking"
+    },
+    {
+      "id": "c8d6",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "f541",
+          "qty": 1
+        },
+        {
+          "bookid": "400b",
+          "qty": 1
+        },
+        {
+          "bookid": "306b",
           "qty": 1
         }
       ],
       "paymenttype": "Credit or Debit Card"
-    },
-    {
-      "id": "adb2",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "f541",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "Net Banking"
-    },
-    {
-      "id": "f1d3",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "cae7",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "UPI Apps"
-    },
-    {
-      "id": "6715",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "f541",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "Net Banking"
-    },
-    {
-      "id": "c5e2",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "9e8c",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "Cash on Delivery / Pay on Delivery"
-    },
-    {
-      "id": "a19e",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "9e8c",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "Net Banking"
-    },
-    {
-      "id": "3be9",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "f541",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "Net Banking"
-    },
-    {
-      "id": "5837",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "9e8c",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "Net Banking"
     }
   ]
 }
