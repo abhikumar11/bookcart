@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { bookStore } from "../utils/BookContext";
 import { userStore } from "../utils/UserContext";
@@ -17,10 +17,20 @@ const BookDetails = () => {
 
   const [qty,setQty]=useState(1);
   const product={item:singleBook,qty:parseInt(qty)}
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchBookById(id);
   }, [id]);
+
+  const handleBuyNow = () => {
+      buySingle(product);
+    if (user) {
+      navigate("/checkout");
+    } else {
+      navigate("/login");
+    }
+  };
 
   if (!singleBook) {
     return <ClipLoader />;
@@ -90,7 +100,7 @@ const BookDetails = () => {
             >
               Add to Cart
             </button>
-            <Link to="/checkout"><button onClick={()=>buySingle(product)}
+           <button onClick={handleBuyNow}
               disabled={singleBook?.instock === 0}
               style={{
                 backgroundColor: singleBook?.instock > 0 ? "#ea580c" : "#D1D5DB",
@@ -100,7 +110,7 @@ const BookDetails = () => {
                 }`}
             >
               Buy Now
-            </button></Link>
+            </button>
           </div>
         </div>
       </div>

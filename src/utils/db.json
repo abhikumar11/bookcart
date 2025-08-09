@@ -59,6 +59,18 @@
       "instock": 15,
       "bimage": "https://shorturl.at/GZWIF",
       "price": 204
+    },
+    {
+      "id": "400b",
+      "title": "Crime",
+      "author": "Fyodor Dostoevsky",
+      "gener": "Crime",
+      "plength": 504,
+      "description": "Rodion Romanov itch Raskolnikov, a brilliant yet conflicted student lives in a rented room of a run-down apartment in St. Petersburg. Extremely handsome, proud and intelligent, Raskolnikov devises a peculiar theory about? intelligent? men being above law",
+      "publisher": "Om Books International",
+      "instock": 15,
+      "bimage": "https://shorturl.at/fX1E6",
+      "price": 204
     }
   ],
   "user": [
@@ -87,10 +99,92 @@
   ],
   "checkout": [
     {
-      "userid": "",
-      "items": [{"bookid": "","qty": ""}],
-      "paymenttype": "",
-      "id": "ed93"
+      "id": "299e",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "cae7",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Credit or Debit Card"
+    },
+    {
+      "id": "adb2",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "f541",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Net Banking"
+    },
+    {
+      "id": "f1d3",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "cae7",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "UPI Apps"
+    },
+    {
+      "id": "6715",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "f541",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Net Banking"
+    },
+    {
+      "id": "c5e2",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "9e8c",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Cash on Delivery / Pay on Delivery"
+    },
+    {
+      "id": "a19e",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "9e8c",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Net Banking"
+    },
+    {
+      "id": "3be9",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "f541",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Net Banking"
+    },
+    {
+      "id": "5837",
+      "userid": "0cc9",
+      "items": [
+        {
+          "bookid": "9e8c",
+          "qty": 1
+        }
+      ],
+      "paymenttype": "Net Banking"
     }
   ]
 }
