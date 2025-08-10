@@ -44,9 +44,12 @@ const CheckoutProvider = ({ children }) => {
     };
 
      axios.post("http://localhost:3000/orders",order)
-     .then(()=>toast.success("Your order has been placed"))
-    //setCheckoutItem([]);
-    //navigate("/order/");
+     .then(()=>{
+          toast.success("Your order has been placed");
+          navigate(`/order/${user.id}`)
+     })
+     
+    
   } catch (err) {
     console.log(err);
     toast.error(`Order failed: ${err.response?.data?.message || err.message}`);

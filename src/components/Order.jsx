@@ -18,11 +18,8 @@ const Order = () => {
         <p className="text-gray-500">No orders found.</p>
       ) : (
         orders.map(order => {
-          const total = order.items.reduce(
-            (sum, item) => sum + item.price * item.qty,
-            0
-          );
-
+          const total=order.items.reduce((sum,item)=>sum+item.price*item.qty,0);
+          const totalitem=order.items.reduce((sum,p)=>sum+p.qty,0);
           return (
             <div
               key={order.id}
@@ -42,9 +39,11 @@ const Order = () => {
                   </p>
                 </div>
 
-                <div className="font-bold text-xl text-gray-900">
-                  Total: ₹{total}
+                <div>
+                  <p className="font-semibold text-blue-600">Item(s): {totalitem}</p>
+                  <p className="font-semibold text-orange-600">Total: ₹{total}</p>
                 </div>
+              
               </div>
 
               {order.items && order.items.length > 0 ? (

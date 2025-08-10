@@ -12,17 +12,17 @@ import OrderProvider from "./utils/OrderContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <UserProvider>
+     <UserProvider>
+      <BookProvider>
         <CartProvider>
-           <CheckoutProvider>
+          <CheckoutProvider>
             <OrderProvider>
-            <BookProvider>
-              <App />
-            </BookProvider>
+              <App/>
             </OrderProvider>
-            </CheckoutProvider>
+          </CheckoutProvider>
         </CartProvider>
-      </UserProvider>
+      </BookProvider>
+     </UserProvider>
     </BrowserRouter>
   </StrictMode>
 );

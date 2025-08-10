@@ -9,8 +9,10 @@ const UserProvider = ({ children }) => {
   const [frmData, setFrmData] = useState({});
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState({});
 
-  
+  const [isEditing, setIsEditing] = useState(false);
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -49,7 +51,6 @@ const UserProvider = ({ children }) => {
       setFrmData({});
       setUser(exist);
 
-     
       localStorage.setItem("user", JSON.stringify(exist));
 
       navigate("/");
@@ -68,7 +69,10 @@ const UserProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:3000/user", frmData);
+      const res = await axios.post(
+        "http://localhost:3000/user",
+        frmData
+      );
 
       if (!res) {
         toast.error("unable to create account");
@@ -85,8 +89,45 @@ const UserProvider = ({ children }) => {
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.removeItem("user"); 
+    localStorage.removeItem("user");
     navigate("/");
+  };
+  const getUser = async () => {
+    const { id } = JSON.parse(localStorage.getItem("user"));
+
+    try {
+      const { data } = await axios.get(`http://localhost:3000/user/${id}`);
+      if (!data) {
+        toast.error("unable to fetch");
+        return;
+      }
+      setProfile(data);
+    } catch (err) {
+      toast.error(`Something went wrong ${err.message}`);
+    }
+  }
+  const handleChange = (e) => {
+    setProfile({ ...profile, [e.target.name]: e.target.value });
+  };
+  const handleProfile = async (e) => {
+
+
+    try {
+      e.preventDefault();
+      const { id } = JSON.parse(localStorage.getItem("user"));
+      const res = await axios.put(
+        `http://localhost:3000/user/${id}`,
+        profile
+      );
+      if (!res) {
+        toast.error("unable to update");
+        return;
+      }
+      toast.success("Profile Updated");
+      setProfile({});
+    } catch (err) {
+      toast.error(`Something went wrong ${err.message}`);
+    }
   };
 
   return (
@@ -97,6 +138,10 @@ const UserProvider = ({ children }) => {
         handleRegister,
         user,
         handleLogout,
+        handleProfile,
+        isEditing,
+        setIsEditing,
+        profile, getUser, handleChange
       }}
     >
       {children}
