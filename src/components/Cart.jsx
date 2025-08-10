@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { cartStore } from "../utils/CartContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import cartimage from '../assets/emptycart.png';
+import { checkoutStore } from "../utils/CheckoutContext";
 
 
 
 const Cart = () => {
-  const { cart, increaseQty, decreaseQty, deleteItem,buyAll } = useContext(cartStore);
+  const { cart, increaseQty, decreaseQty, deleteItem } = useContext(cartStore);
+  const { checkOutAll } = useContext(checkoutStore);
+
 
 
   const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -69,7 +72,7 @@ const Cart = () => {
               Subtotal ({totalItems} item{totalItems > 1 ? "s" : ""}): ₹{totalPrice}
             </p>
 
-            <button onClick={() => buyAll(cart)} className="w-full bg-orange-600 text-white py-2 rounded font-semibold hover:bg-orange-700 cursor-pointer">
+            <button onClick={()=> checkOutAll(cart)} className="w-full bg-orange-600 text-white py-2 rounded font-semibold hover:bg-orange-700 cursor-pointer">
               Proceed to Buy
             </button>
           </div>
