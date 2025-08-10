@@ -97,40 +97,21 @@
       "password": "123"
     }
   ],
-  "usercheckout": [
+  "orders": [
     {
-      "id": "87f6",
+      "id": "24c7",
       "userid": "0cc9",
       "items": [
         {
-          "bookid": "f541",
-          "qty": 1
-        },
-        {
-          "bookid": "cae7",
-          "qty": 1
+          "bookid": "9e8c",
+          "title": "Never Lie",
+          "qty": 1,
+          "price": 343,
+          "bimage": "https://shorturl.at/ZFL0h"
         }
       ],
-      "paymenttype": "Net Banking"
-    },
-    {
-      "id": "c8d6",
-      "userid": "0cc9",
-      "items": [
-        {
-          "bookid": "f541",
-          "qty": 1
-        },
-        {
-          "bookid": "400b",
-          "qty": 1
-        },
-        {
-          "bookid": "306b",
-          "qty": 1
-        }
-      ],
-      "paymenttype": "Credit or Debit Card"
+      "paymenttype": "Credit or Debit Card",
+      "orderdate": "2025-08-10T10:44:47.202Z"
     }
   ]
 }

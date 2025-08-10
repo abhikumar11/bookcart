@@ -5,12 +5,12 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Cart from './components/Cart'
 import Order from './components/Order'
-import Checkout from './components/Checkout'
 import { ToastContainer } from 'react-toastify'
 import { useContext } from 'react'
 import { userStore } from './utils/UserContext'
 import BookDetails from './components/BookDetails'
 import Profile from './components/Profile'
+import Checkout from './components/Checkout'
 
 const App = () => {
   const {user}=useContext(userStore);
@@ -24,9 +24,9 @@ const App = () => {
         <Route path="/register" element={<Register/>}/>
         <Route path="/profile/:id" element={<Profile/>}/>
         <Route path="/cart" element={<Cart/>}/>
-        <Route path="/order" element={user?<Order/>:<Login/>}/>
+        <Route path="/order/:id" element={user?<Order/>:<Login/>}/>
         <Route path="/bookdetail/:id" element={<BookDetails/>}/>
-        <Route path="/checkout" element={user?<Checkout/>:<Login/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
       </Route>
       </Routes>
     </div>

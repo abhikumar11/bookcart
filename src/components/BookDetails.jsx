@@ -12,21 +12,17 @@ const BookDetails = () => {
 
   const { singleBook, fetchBookById } = useContext(bookStore);
   const {addToCart}=useContext(cartStore);
-  const {buySingle}=useContext(checkoutStore);
   const {user}=useContext(userStore)
-
+  const {buySingle}=useContext(checkoutStore);
   const [qty,setQty]=useState(1);
-  const product={item:singleBook,qty:parseInt(qty)}
+  const product={...singleBook,qty:parseInt(qty)}
+
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchBookById(id);
   }, [id]);
 
-  const handleBuyNow = () => {
-    navigate("/checkout");
-    buySingle(product);
-  };
 
   if (!singleBook) {
     return <ClipLoader />;
@@ -96,7 +92,7 @@ const BookDetails = () => {
             >
               Add to Cart
             </button>
-           <button onClick={handleBuyNow}
+           <button type="button" onClick={()=>buySingle(product)}
               disabled={singleBook?.instock === 0}
               style={{
                 backgroundColor: singleBook?.instock > 0 ? "#ea580c" : "#D1D5DB",

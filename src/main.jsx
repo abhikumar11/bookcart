@@ -7,16 +7,20 @@ import UserProvider from "./utils/UserContext.jsx";
 import BookProvider from "./utils/BookContext.jsx";
 import CartProvider from "./utils/CartContext.jsx";
 import CheckoutProvider from "./utils/CheckoutContext.jsx";
+import OrderProvider from "./utils/OrderContext.jsx";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <UserProvider> {/* stays alive for whole session */}
+      <UserProvider>
         <CartProvider>
-          <CheckoutProvider>
+           <CheckoutProvider>
+            <OrderProvider>
             <BookProvider>
               <App />
             </BookProvider>
-          </CheckoutProvider>
+            </OrderProvider>
+            </CheckoutProvider>
         </CartProvider>
       </UserProvider>
     </BrowserRouter>

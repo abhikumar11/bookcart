@@ -6,15 +6,13 @@ const Checkout = () => {
   const { handlePayment, payment, checkOutItem,placeOrder } = useContext(checkoutStore);
   const { user } = useContext(userStore);
 
-  const totalitems = checkOutItem.reduce((sum, p) => sum + p.qty, 0);
-  const totalprice = checkOutItem.reduce(
-    (sum, p) => sum + p.price * p.qty,
-    0
-  );
+  const totalitems = checkOutItem.reduce((sum,p)=>sum+p.qty,0);
+  const totalprice = checkOutItem.reduce((sum,p)=>sum+p.price*p.qty,0);
 
   useEffect(() => {
     handlePayment("");
   }, []);
+  
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -131,3 +129,7 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+
+
+

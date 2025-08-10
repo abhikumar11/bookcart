@@ -44,7 +44,7 @@ const UserProvider = ({ children }) => {
         toast.error("Wrong password");
         return;
       }
-
+      console.log("login");
       toast.success("Login successful");
       setFrmData({});
       setUser(exist);

@@ -18,6 +18,7 @@ const CheckoutProvider = ({ children }) => {
 
      const buySingle=(item) => {
           setCheckoutItem([item]);
+          navigate("/checkout");
      };
 
      const handlePayment = (item) => {
@@ -29,24 +30,23 @@ const CheckoutProvider = ({ children }) => {
   try {
     const temp = checkOutItem.map((p) => ({
       bookid: p.id,
+      title:p.title,
       qty: p.qty,
+      price:p.price,
+      bimage:p.bimage
     }));
 
     const order = {
       userid: user.id,
       items: temp,
       paymenttype: payment,
+      orderdate: new Date().toISOString()
     };
-    console.log("Order payload:", order);
 
-     axios.post("http://localhost:3000/usercheckout", order)
-     .then(()=>{
-                toast.success("Your order has been placed");
-     })
-
-   
+     axios.post("http://localhost:3000/orders",order)
+     .then(()=>toast.success("Your order has been placed"))
     //setCheckoutItem([]);
-    //navigate("/order");
+    //navigate("/order/");
   } catch (err) {
     console.log(err);
     toast.error(`Order failed: ${err.response?.data?.message || err.message}`);

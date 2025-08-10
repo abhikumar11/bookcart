@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex items-center space-x-6 text-gray-700">
           {user && <span className="font-medium">Hi, {user.name}</span>}
 
-          <Link to={user ? "/order" : "/login"} className="hover:text-orange-600">
+          <Link to={user ? `/order/${user.id}` : "/login"} className="hover:text-orange-600">
             Orders
           </Link>
 
