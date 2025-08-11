@@ -9,9 +9,9 @@ const Checkout = () => {
   const totalitems = checkOutItem.reduce((sum,p)=>sum+p.qty,0);
   const totalprice = checkOutItem.reduce((sum,p)=>sum+p.price*p.qty,0);
 
-  useEffect(() => {
-    handlePayment("");
-  }, []);
+  // useEffect(() => {
+  //   handlePayment("");
+  // }, []);
   
   return (
     <div className="min-h-screen bg-gray-50 p-6">

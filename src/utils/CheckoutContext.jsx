@@ -25,7 +25,8 @@ const CheckoutProvider = ({ children }) => {
           setPayment(item);
      };
 
-     const placeOrder=()=>{
+     const placeOrder=(e)=>{
+e.preventDefault();
           const user=JSON.parse(localStorage.getItem("user"))
   try {
     const temp = checkOutItem.map((p) => ({
@@ -46,7 +47,7 @@ const CheckoutProvider = ({ children }) => {
      axios.post("http://localhost:3000/orders",order)
      .then(()=>{
           toast.success("Your order has been placed");
-          navigate(`/order/${user.id}`)
+         // navigate(`/order/${user.id}`)
      })
      
     
