@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { userStore } from "../utils/UserContext";
+import { cartStore } from "../utils/CartContext";
 
 const Header = () => {
   const { user, handleLogout } = useContext(userStore);
+  const {cart}=useContext(cartStore);
+
+  const cartItems=cart.reduce((sum,p)=>sum+p.qty,0);
 
   return (
     <header className="bg-white shadow-md py-4 px-6">
@@ -24,8 +28,13 @@ const Header = () => {
             Profile
           </Link>
 
-          <Link to="/cart" className="hover:text-orange-600">
+         <Link to="/cart" className="relative hover:text-orange-600">
             Cart
+            {cartItems > 0 && (
+              <span className="absolute -top-2 -right-3 bg-orange-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                {cartItems}
+              </span>
+            )}
           </Link>
 
           {user ? (
