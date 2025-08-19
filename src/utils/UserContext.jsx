@@ -33,6 +33,11 @@ const UserProvider = ({ children }) => {
       toast.error("Please enter valid credentials");
       return;
     }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      toast.error("Enter a valid email address");
+      return;
+    }
+   
     try {
       const res = await axios.get("http://localhost:3000/user");
       const exist = res.data.find((item) => item.email === email);
@@ -68,6 +73,23 @@ const UserProvider = ({ children }) => {
       toast.error("Please enter valid credentials");
       return;
     }
+    if (name.length < 3) {
+      toast.error("Name must be at least 3 characters");
+      return;
+    }
+    if (!/^[A-Za-z ]+$/.test(name)) {
+      toast.error("Name should contain only alphabets");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      toast.error("Enter a valid email address");
+      return;
+    }
+    if (password.length < 8) {
+      toast.error("Password must be at least 8 characters");
+      return;
+    }
+
     try {
       const res = await axios.post(
         "http://localhost:3000/user",

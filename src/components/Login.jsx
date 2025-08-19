@@ -17,7 +17,7 @@ const Login = () => {
               Email
             </label>
             <input
-              type="email"
+              type="text"
               name="email"
               onChange={handleInput}
               required
